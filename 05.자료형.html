@@ -130,6 +130,15 @@
         // 몇개가 있는지는 모르겠지만.... 맨 마지막 아이템을 조회해야 한다면?
         console.log(car[car.length-1]);
 
+        // 'apple', 'banana','cherry','mango' 4개의 과일을 담아두고,
+        // 해당 순번을 입력하면 해당 과일이 알림창에 노출되게 해주세요.
+        // 1번 입력시 -> 내가 고른 과일은 banana입니다. 알림.
+
+        const fruits = ['apple', 'banana','cherry','mango'];
+        let index = parseInt(prompt('순번을 입력하세요'));
+        
+        alert(`내가 고른 과일은 ${fruits[index]}입니다.`);
+
         // 02. 객체 (Object)
 
         const user1 = {

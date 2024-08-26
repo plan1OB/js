@@ -155,6 +155,22 @@
         }else{
             document.write('보태준거 있냐...?');
         }
+        
+        // score를 유저로부터 입력받고, 
+        // 90 이상일 때는 A등급을,
+        // 90미만 80 이상일 때는 B등급을,
+        // 80미만 70 이상일 때는 C등급을,
+        // 70미만 60 이상일 때는 D등급을,
+        // 60미만인 경우는 F등급으로 알림창을 띄어주세요
+        // 삼항연산자 응용할 것.
+
+        const score = parseInt(prompt('당신의 점수는?'));
+        const grade = score >= 90
+            ? 'A' : score >= 80
+                ? 'B' : score >= 70
+                    ? 'C' : score >= 60
+                        ? 'D' : 'F';
+        alert(`너의 점수는 ${score}점 이고, 너의 등급은${grade}등급 이다.`);
     </script>
 </body>
 </html>

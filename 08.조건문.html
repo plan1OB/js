@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 특정조건에 부합하는경우 실행문을 실행함.
+        // 한 문장만 실행 할 때는 중괄호 생략 가능.
+        // 여러 문장 실행 할 경우에는 반드시 중괄호로 감싸야함.
+
+        // 만약에~ 내가 로또 1등에 당첨된다면 저택을 사겠다.
+        // if(내가 로또 1등에 당첨){저택을 사겠다.}
+
+        // 만약에~ 내가 로또 1등에 당첨된다면 저택을 사겠다.
+        // 그게 아니라면 뼈빠지게 일하겠다.
+        // if(내가 로또 1등에 당첨){저택을 사겠다}else{뼈빠지게 일하겠다}
+
+        // Q.1
+        // 유저한테 회원가입 진짜 할거냐고 물어보고
+        // 한다그러면 알림창으로 회원가입완료 라고 띄워주세요
+        // 안한다그러면 알림창으로 응 잘가 출력
+
+        const userConfirm = confirm('진짜 회원 가입 할거니?');
+
+        if(userConfirm === true){
+            alert('회원가입 완료');
+        }else{
+            alert('응~ 잘가~');
+        }
+
+        // else if ~
+
+        // 만약에~ 내가 로또 1등에 당첨된다면 저택을 사겠다.
+        // 혹시나 2등에 당첨이 된다면 일은 하겠지만 조금만 할거다.
+        // 그게 아니라면 뼈빠지게 일하겠다.
+        // if(내가 로또 1등에 당첨){
+        //      저택을 사겠다
+        // }esle if(2등에 당첨이 된다면){
+        //      일은 하겠지만 조금만 할거다
+        // }else{
+        //     뼈빠지게 일하겠다
+        // }
+
+        // 유저에게 ID, PW를 입력받아 ID가 'green'이고 PW '1234'일 경우에만
+        // '관리자님 환영함' 알림출력~
+        // ID만 잘못 됬을 경우 '응 아니야 id 틀림' 알림 출력
+        // PW만 잘못 됬을 경우 '응 아니야 pw 틀림' 알림 출력
+
+        const userId = prompt('ID 입력해');
+        const userPw = prompt('PW 입력해');
+        
+        if(userId === 'green' && userPw === '1234'){
+            alert('관리자님 환영함~');
+        }else if(userId !== 'green' && userPw === '1234'){
+            alert('응 아니야 id 틀림');
+        }else if(userId === 'green' && userPw !== '1234'){
+            alert('응 아니야 pw 틀림');
+        }else{
+            alert('다 틀림 나가셈');
+        }
+        </script>
+</body>
+</html>
