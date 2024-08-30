@@ -4,12 +4,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>for 예제</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        #nike_list{
+            display: flex;
+            flex-wrap: wrap;
+            width: 1280px;
+            justify-content: space-between;
+            margin: 50px auto;
+        }
+        #nike_list li{
+            width: 30%;
+        }
+        #nike_list li a{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            color: #333;
+        }
+        #nike_list li a img{
+            display: block;
+            width: 100%;
+            margin-top: 40px;
+        }
+        #nike_list li a span{
+            font-size: 18px;
+        }
+        #more_btn{
+            display: block;
+            font-size: 18px;
+            border: 0;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 50px;
+            margin: 50px auto;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <ul id="nike_list">
-        <li><a href="#"><img src="" alt=""><span></span><span></span></a></li>
-        <li><a href="#"><img src="" alt=""><span></span><span></span></a></li>
-        <li><a href="#"><img src="" alt=""><span></span><span></span></a></li>
+        <li><a href="#"><img src="./img/img_01.png" alt=""><span>나이키 페가수스</span><span>209,000 원</span></a></li>
+        <li><a href="#"><img src="./img/img_02.png" alt=""><span>나이키 코르테즈</span><span>119,000 원</span></a></li>
+        <li><a href="#"><img src="./img/img_03.png" alt=""><span>나이키 베이퍼플레이</span><span>299,000 원</span></a></li>
     </ul>
+    <button id="more_btn">더보기</button>
+
+    <script>
+        
+        const nikeList = document.querySelector('#nike_list');
+        const items = [['./img/img_04.png', '나이키 인빈서블', '209,000 원'],
+                        ['./img/img_05.png', '나이키 P-6000', '129,000 원'],
+                        ['./img/img_06.png', '나이키 P-5400', '169,000 원'],
+                        ['./img/img_07.png', '에어 조던 뮬', '129,000 원'],
+                        ['./img/img_08.png', '에어 조던 1 로우', '159,000 원'],
+                        ['./img/img_09.png', '에어 조던 4 RM', '179,000 원'],
+                        ['./img/img_04.png', '나이키 인빈서블', '209,000 원'],
+                        ['./img/img_05.png', '나이키 P-6000', '129,000 원'],
+                        ['./img/img_06.png', '나이키 P-5400', '169,000 원']
+                    ]; // 서버에서 넘어오는 정보? 몇개인지?
+
+        let currentIndex = 0; // 전역변수 
+
+        function addListItem(){
+            let newItem = ''; 
+            for(let i = 0; i < 3 && currentIndex < items.length; i++){
+                newItem += `<li><a href="#"><img src="${items[currentIndex][0]}" alt=""><span>${items[currentIndex][1]}</span><span>${items[currentIndex][2]}</span></a></li>`;
+                currentIndex++;
+            }
+            if(currentIndex >= items.length){
+                document.querySelector('#more_btn').style.display = 'none';
+            }
+            nikeList.insertAdjacentHTML('beforeend', newItem);
+            // insertAdjacentHTML -> 메서드, 지정한 위치에 HTML을 삽입하는 역할을 함. 두개의 인자를 받음.
+
+            // --beforebegin --p요소 바로 앞에 html 삽입 
+            // <p>
+            // --afterbegin --p요소 첫번째 자식 바로 앞에  html 삽입
+            // <span>Hello World!</span>
+            // --beforeend --p요소 마지막 자식 바로 다음에 html 삽입
+            // </p>
+            // --afterend --p요소 바로 다음에 html 삽입
+        }
+
+        document.querySelector('#more_btn').addEventListener('click', addListItem);
+    </script>
 </body>
 </html>
