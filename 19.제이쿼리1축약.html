@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>attr, data, each</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        #img_list{
+            display: flex;
+            width: 80vw;
+            justify-content: space-between;
+            margin: 30px auto;
+        }
+        #img_list li a{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+        #img_list li a img{
+            width: 90%;
+        }
+        #img_list li a span{
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <ul id="img_list">
+        <li>
+            <a href="#">
+                <img src="./img/img_01.png" alt="나이키 인빈서블" data-origin="./img/img_01.png" data-img="./img/img_04.png" data-alt="나이키 인빈서블" data-title="나이키 페가수스">
+                <span class="title" >나이키 인빈서블</span>
+                <span>209,000 원</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="./img/img_02.png" alt="나이키 P-6000" data-origin="./img/img_02.png" data-img="./img/img_05.png" data-alt="나이키 P-6000" data-title="나이키 코르테즈">
+                <span class="title">나이키 P-6000</span>
+                <span>129,000 원</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="./img/img_03.png" alt="나이키 P-5400" data-origin="./img/img_03.png" data-img="./img/img_06.png" data-alt="나이키 P-5400" data-title="나이키 베이퍼플레이">
+                <span class="title">나이키 P-5400</span>
+                <span>169,000 원</span>
+            </a>
+        </li>
+    </ul>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){           
+            $('#img_list li a img').on('mouseenter', function(){
+                $(this).attr('src', $(this).data('img')).siblings('.title').html($(this).data('title'));
+            }).on('mouseleave', function(){
+                $(this).attr('src', $(this).data('origin')).siblings('.title').html($(this).data('alt'));
+            });
+        });
+    </script>
+</body>
+</html>

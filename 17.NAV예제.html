@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nav</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        header{
+            background-color: #333;
+        }
+        .container{
+            display: flex;
+            width: 1280px;
+            justify-content: space-between;
+            margin: 0 auto;
+        }
+        .container h1 a{
+            color: #fff;
+            font-size: 18px;
+            line-height: 50px;
+        }
+        #nav{
+            width: 50%;
+            display: flex;
+            justify-content: flex-end;
+            gap: 40px;
+        }
+        #nav li a{
+            color: #fff;
+            line-height: 50px;
+            font-size: 18px;
+        }
+</style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="#">LOGO</a></h1>
+            <ul id="nav">
+
+            </ul>   
+        </div>
+    </header>
+    <script>
+        const navi = [
+            {
+                menuName : 'naver',
+                url : 'https://www.naver.com',
+                target : '_blank'
+            },
+            {
+                menuName : 'daum',
+                url : 'https://www.daum.net',
+                target : '_blank'
+            },
+            {
+                menuName : 'google',
+                url : 'https://www.google.com',
+                target : ''
+            }
+        ];
+        let tags = '';
+        
+        for(let i in navi){
+            console.log(i, navi);
+            tags += `
+                        <li>
+                            <a href="${navi[i].url}" target="${navi[i].target}">${navi[i].menuName}</a>
+                        </li>
+                    `;
+        }
+        document.querySelector('#nav').innerHTML = tags;
+    </script>
+</body>
+</html>

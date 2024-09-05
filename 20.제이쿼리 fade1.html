@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fade in out</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    ul{
+        list-style: none;
+    }
+    a{
+        text-decoration: none;
+    }
+    #container{
+        width:1280px;
+        margin:0 auto;
+    }
+    #main_b{
+        width: 100%;
+        position: relative;
+    }
+    #main_b ul li{
+        width: 100%;
+        height: 300px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none;
+    }
+    #main_b ul li a{
+        display: block;
+        line-height: 300px;
+        text-align: center;
+        font-size: 50px;
+        color: #fff;
+    }
+    #main_b ul li:nth-child(1){
+        background-color: #ff0000;
+    }
+    #main_b ul li:nth-child(2){
+        background-color: #00ff21;
+    }
+    #main_b ul li:nth-child(3){
+        background-color: #3b00ff;
+    }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="main_b">
+            <ul>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+            </ul>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+
+            let count = 0;
+
+            $("#main_b ul li").eq(count).fadeIn(300);
+            //$( '셀렉터' ).eq(숫자)  -  셀렉터에 해당하는 요소중 특정 순서의 것을 찾습니다.
+            // $( '셀렉터' ).eq(0)  -  셀렉터에 해당하는 요소중 첫번째것 (0부터 시작)
+            // $( '셀렉터' ).eq(2)  -  셀렉터에 해당하는 요소중 세번째것
+            // $( '.css_test  img' ).eq(0)  -  클래스명이 css_test 인것에 속한 이미지중 첫번째 것 찾기
+            
+            setInterval(function(){
+                //setInterval() 함수는 일정한 시간 간격으로 코드를 무한반복 실행하는 함수
+                count++;
+                count %= $("#main_b ul li").length;
+                $("#main_b ul li").eq(count).fadeIn(300).siblings().fadeOut(300);
+            },1500);
+
+            // .eq() 메서드는 선택한 요소에 인덱스 번호에 해당하는 요소를 찾습니다.
+            // .filter() 메서드는 선택된 요소에서 선택하거나 함수를 사용할 수 있습니다.
+            // .first() 메서드는 선택된 요소에서 첫번째 자식 요소를 찾습니다.
+            // .has() 메서드는 선택된 요소의 자식 요소에서 주어진 선택자를 찾습니다.
+            // .is() 메서드는 선택된 요소 객체의 특징을 판별합니다.
+            // .last() 메서드는 선택된 요소에서 마지막 번째 자식 요소를 찾습니다.
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fade in out</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        #container{
+            width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        #main_b{
+            position: relative;
+            height: 300px;
+        }
+        #main_b ul li{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            display: none;
+        }
+        #main_b ul li a{
+            display: block;
+            line-height: 300px;
+            text-align: center;
+            font-size: 50px;
+            color: #fff;
+        }
+        #container button{
+            display: inline-block;
+            border: 0;
+            background-color: #333;
+            color: #fff;
+            margin: 50px 10px;
+            padding: 20px 50px;
+            cursor: pointer;
+        }
+        #main_b .bg_01{
+            background-color: #ff0000;
+        }
+        #main_b .bg_02{
+            background-color: #0b540b;
+        }
+        #main_b .bg_03{
+            background-color: #0000ff;
+        }
+</style>
+</head>
+<body>
+    <div id="container">
+        <div id="main_b">
+            <ul>
+                <li class="bg_01"><a href="#">1</a></li>
+                <li class="bg_02"><a href="#">2</a></li>
+                <li class="bg_03"><a href="#">3</a></li>
+            </ul>
+        </div>
+        <button id="play">PLAY</button>
+        <button id="stop">STOP</button>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+
+            let count = 0;
+            let bool = true;
+
+            $('#main_b ul li').eq(count).fadeIn(300);
+
+            let autoFade = setInterval(fadeInOut, 1500);
+
+            $('#stop').on('click', function(){
+                if(bool === true){
+                    clearInterval(autoFade); // clearInterval(변수명);
+                    bool = false;
+                }
+            });
+
+            $('#play').on('click', function(){
+                if(bool === false){
+                    autoFade = setInterval(fadeInOut, 1500);
+                    bool = true; // 이 값이 없으면 플레이버튼 중복이 터짐.
+                }
+            });
+
+            function fadeInOut(){
+                count++;
+                count %= $('#main_b ul li').length; 
+                $('#main_b ul li').eq(count).fadeIn(300).siblings().fadeOut(300);
+            }
+        });
+
+
+    </script>
+</body>
+</html>
