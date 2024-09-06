@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>string 내장함수</title>
+</head>
+<body>
+    <script>
+        let txt = 'ABCDEFG';
+        console.log(txt.length); // 몇글자인지 알려줌. 글자의 길이를 알려주는 내장함수.
+
+        let str = 'Hello World this "World"';
+        console.log(str.indexOf('World'));
+        console.log(str.indexOf('Kim')); // 없는단어 : -1을  리턴
+        // 찾으려는 단어의 첫번째 글자의 인덱스 번호를 리턴해줌. (첫번째 단어)
+
+        if(str.indexOf('World') > -1){
+            console.log('World 문자 있음');
+        }
+        // 찾으려는 단어가 있는지에 대해 많이 쓰임.
+
+        console.log(str.lastIndexOf('World'));
+        // indexOf 마찬가지로 같은 단어를 찾음, 마지막 단어 찾아서 인덱 번호 반환.
+
+        console.log(str.search('World')); // indexOf 같다.
+
+        let str2 = 'Apple, Banana, Kiwi';
+        console.log(str2.slice(7, 13)); // Banana
+        console.log(str2.slice(0, 5)); // Apple
+        console.log(str2.slice(-12, -6)); // 맨 뒤가 -1 임.
+        // 7 : 시작점 인덱스, 13 : 종료지점 인덱스 + 1 (가져오는건 12까지)
+
+        console.log(str2.substring(7, 13));
+        // slice랑 비슷
+
+        console.log(str2.substr(15, 4)); // 시작지점 15, 몇개를 가져올 것인지 4
+
+        // 왜 이렇게 많아..?
+
+        const birthday = '021118'; // 사용자한테 입력받았다고 침.
+        console.log(birthday.substr(0, 2)); // 몇년생인지 바로 가지고 옴.
+        console.log(birthday.substr(2, 2)); // 몇월생인지 바로 가지고 옴.
+
+        const birthday2 = '2002-11-18';
+        console.log(birthday2.substring(0, birthday2.indexOf('-')));
+        // 0부터 시작, 찾으려는 단어의 인덱스 번호 -> 끝지점
+
+        let str3 = 'Hello World, World! World!';
+        let str4 = str3.replace('World', 'place');
+        // 첫번째 한 단어만 바꿔치기
+        console.log(str4);
+
+        console.log(str3.toUpperCase()); // 전부다 대문자
+        console.log(str3.toLowerCase()); // 전부다 소문자
+
+        let txt1 = 'Hello';
+        let txt2 = 'World';
+
+        let txt3 = txt1.concat(' ', txt2); // 문자를 연결 지어줌.
+        console.log(txt3);
+
+        let txt4 = '     Hello World!     ';
+        console.log(txt4.trim()); // 앞뒤 공백 모두 삭제.
+        // 유저한테 데이터 입력받았을때, 공백때문에 검색이 안되는 경우 
+
+        let str5 = '9';
+        console.log(str5.padStart(2, 0)); 
+        // 첫번째 파라미터 -> 무조건 2자리 숫자로 만들어라
+        // 두번째 파라미터 -> 앞에는 0으로 채워라
+        // 특히 날짜, 05 06 07 08
+
+        console.log(str5.padEnd(4, 0));
+        // 뒤에를 채워라 5000이 됨. 제품코드 관리할때 유용하게 쓰임.
+
+        // charAt (캐릭터 앳)
+        let str6 = 'Hello World';
+        console.log(str6.charAt(1)); // 내가 원하는 위치에 있는 문자 하나를 가져옴.
+
+        let tags = '컴퓨터,AS,출장수리';
+        let arr = tags.split(',');
+        console.log(arr);
+
+        // 각각 따로따로 화면에 노출해보기.
+
+        // for(str of arr){
+        //     document.write(`${str}<br>`);
+        // }
+
+        userData = [
+            {
+                name : 'kim',
+                age : '800905'
+            },{
+                name : 'Lee',
+                age : '920807'
+            },{
+                name : 'Park',
+                age : '021108'
+            }
+        ];
+
+        for (i in userData){
+            document.write(`${userData[i].name}의 생일은 ${userData[i].age.substr(2,2)}월 ${userData[i].age.substr(4,2)}일 입니다.<br>`);
+        }
+    </script>
+</body>
+</html>
